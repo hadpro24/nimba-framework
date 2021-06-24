@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{{ load_static('nimba/main.css') }}">
+</head>
+<body>
+	<div class="contenair error_404">
+		{% if route_error %}
+			<h1>Not found route : {{page_name}} (404)</h1>
+			<p><strong>METHOD : {{ request.method }}</strong></p>
+			<p style="padding-left: 10px">Route available :  <br>
+				{% for item in available_route %}
+					- {{item}} <br>
+				{% endfor %}
+			</p>
+		{% endif %}
+		
+	</div>
+</body>
+</html>

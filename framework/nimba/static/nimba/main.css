@@ -1,0 +1,18 @@
+.contenair{
+	width: 70%;
+	margin: 0 auto;
+	border: 1.2px solid #ccc;
+	padding: 10px 20px;
+}
+h1{
+  color: #cc9689;
+}
+.error_404 ul{
+	list-style: none;
+	border: 0.5px dashed #ccc;
+	padding: 14px;
+	word-break: break-all;
+}
+body {
+	/*background-color: #f3eacf !important;*/
+}

@@ -1,0 +1,109 @@
+site_name: Nimba Framework
+site_description: Nimba framework, easy to learn, fast to code, ready for production
+site_url: https://framework.nimbasolution.com/
+theme:
+  name: material
+  palette:
+  - scheme: default
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/lightbulb-outline
+      name: Switch to light mode
+  - scheme: slate
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/lightbulb
+      name: Switch to dark mode
+  features:
+  - search.suggest
+  - search.highlight
+  icon:
+    repo: fontawesome/brands/github-alt
+  logo: img/nimba-logo.jpg
+  favicon: img/nimba-logo.jpg
+  language: en
+repo_name: nimba/framework
+repo_url: https://github.com/hadpro24/nimba-framework
+edit_uri: ''
+google_analytics:
+- UA-133183413-1
+- auto
+nav:
+- Nimba Framework: index.md
+- features.md
+- Tutorial - User Guide:
+  - tutorial/index.md
+  - tutorial/first-steps.md
+  - tutorial/path-params.md
+  - tutorial/query-params.md
+  - tutorial/body.md
+  - Dependencies:
+    - tutorial/dependencies/index.md
+    - tutorial/dependencies/classes-as-dependencies.md
+    - tutorial/dependencies/sub-dependencies.md
+    - tutorial/dependencies/dependencies-in-path-operation-decorators.md
+    - tutorial/dependencies/global-dependencies.md
+    - tutorial/dependencies/dependencies-with-yield.md
+  - Security:
+    - tutorial/security/index.md
+    - tutorial/security/first-steps.md
+    - tutorial/security/get-current-user.md
+    - tutorial/security/simple-oauth2.md
+    - tutorial/security/oauth2-jwt.md
+  - tutorial/middleware.md
+  - tutorial/cors.md
+  - tutorial/sql-databases.md
+  - tutorial/bigger-applications.md
+  - tutorial/background-tasks.md
+  - tutorial/metadata.md
+  - tutorial/static-files.md
+  - tutorial/testing.md
+  - tutorial/debugging.md
+- Advanced User Guide:
+  - advanced/index.md
+  - advanced/path-operation-advanced-configuration.md
+  - advanced/additional-status-codes.md
+  - advanced/response-directly.md
+  - advanced/custom-response.md
+  - advanced/additional-responses.md
+  - advanced/response-cookies.md
+  - advanced/response-headers.md
+  - advanced/response-change-status-code.md
+  - advanced/advanced-dependencies.md
+  - Advanced Security:
+    - advanced/security/index.md
+    - advanced/security/oauth2-scopes.md
+    - advanced/security/http-basic-auth.md
+  - advanced/using-request-directly.md
+  - advanced/middleware.md
+  - advanced/sql-databases-peewee.md
+- Deployment:
+  - deployment/index.md
+  - deployment/versions.md
+  - deployment/https.md
+  - deployment/deta.md
+  - deployment/docker.md
+  - deployment/manually.md
+- contributing.md
+- release-notes.md
+extra:
+  social:
+  - icon: fontawesome/brands/github-alt
+    link: https://github.com/hadpro24/nimba-framework
+  - icon: fontawesome/brands/discord
+    link: https://discord.gg/VQjSZaeJmf
+  - icon: fontawesome/brands/twitter
+    link: https://twitter.com/tiangolo
+  - icon: fontawesome/brands/linkedin
+    link: https://www.linkedin.com/in/tiangolo
+  - icon: fontawesome/brands/dev
+    link: https://dev.to/tiangolo
+extra_css:
+- css/termynal.css
+- css/custom.css
+extra_javascript:
+- https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js
+- js/termynal.js
+- js/custom.js

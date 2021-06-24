@@ -1,2 +1,0 @@
-Jinja2==3.0.0
-MarkupSafe==2.0.0
