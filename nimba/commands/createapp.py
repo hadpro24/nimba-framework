@@ -9,6 +9,33 @@ import pathlib
 from nimba.commands.base import Loader
 from nimba.core.exceptions import AppNameIncorrect, CommandError
 
+
+manager_file = """#!/usr/bin/env python
+import pathlib
+import sys
+
+from app.views import * #import your view
+
+def main():
+    try:
+        from nimba.commands import run_command
+    except ImportError as e:
+        raise ImportError(
+            "Couldn't import nimba server. Active your environnement"
+            "or install nimba framework (ex: pip install nimba-framework)"
+        )
+    run_command(sys.argv, pathlib.Path(__file__).parent.absolute())
+
+if __name__ == '__main__':
+    main()
+"""
+import_view = """from nimba.http import router, render
+
+@router('/')
+def home(request):
+    return "Nimba Framework installed succesfuly!"
+"""
+
 class CreateApp:
     """
         Creating app command
@@ -49,15 +76,17 @@ class CreateApp:
             #init
             f = open(os.path.join(path_application, 'app', '__init__.py'), 'w+')
             f.close()
+            f = open(os.path.join(path_application, 'app', 'models.py'), 'w+')
+            f.close()
+            f = open(os.path.join(path_application, 'app', 'views.py'), 'w+')
+            f.write(import_view)
+            f.close()
             #setting
             f = open(os.path.join(path_application, 'settings.py'), 'w+')
             f.close()
             #copy file
-            original = os.path.basename(sys.argv[0])
-            shutil.copyfile(original, os.path.join(path_application, original))
+            with open(os.path.join(path_application, 'nimba.py'), 'w+') as file:
+                file.write(manager_file)
             #verify emplacement
             sleep(0.5)
 
-
-
-       
