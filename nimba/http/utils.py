@@ -31,6 +31,7 @@ from nimba.http.errors import (
 )
 
 ROUTES = {}
+PROJECT_MASK = 'PROJECT_MASK_PATH'
 
 def load_static(value):
 	return os.path.join('/static/', value)
@@ -39,7 +40,14 @@ def render(template, contexts=None, status=200, charset='utf-8', content_type='t
 	"""
 		Rendering template
 	"""
-	path = os.path.join(os.getcwd(), f'nimba/templates/{template}')
+	contexts = contexts or {}
+
+	relative_path = os.path.join(os.path.dirname(__file__), '../')
+	mask_path = os.path.join(relative_path, f'templates/{template}')
+	project_path = os.path.join(os.environ.get(PROJECT_MASK), f'templates/{template}')
+
+	path = mask_path if os.path.exists(mask_path) else project_path
+	#set header
 	_status = status
 	headers = Headers()
 	ctype   = f'{content_type}; charset={charset}'
@@ -48,11 +56,6 @@ def render(template, contexts=None, status=200, charset='utf-8', content_type='t
 	    loader=BaseLoader(),
 	    autoescape=select_autoescape(['html', 'xml'])
 	)
-	if not os.path.exists(path) and status != 404:
-		contexts = {'template_name': template, 'template_error': True}
-		path = os.path.join(os.getcwd(), f'nimba/templates/404.html')
-		print(f'\nNot found page : {template}')
-		_status = 404
 	#load env jinja2
 	contexts['load_static'] = load_static
 	with open(path, 'r') as content_file:

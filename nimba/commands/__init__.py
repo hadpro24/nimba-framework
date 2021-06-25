@@ -1,11 +1,12 @@
 import sys
 import os
 import argparse
+import pathlib
 import optparse
 import traceback
 
 from nimba.commands.createapp import CreateApp
-from nimba.server import Application
+from nimba.core.server import Application
 
 class CommandUtility:
 	"""
@@ -66,9 +67,9 @@ class CommandUtility:
 			print(f"Nimba Framework {__version__}")
 			print("Nimba Solution Compagny all rights reserved.")
 
-
-def run_command(argv, path_app):
+def mont_nimba(argv, path_app):
 	#create app
-	argv = argv or sys.argv[:]
+	# argv = sys.argv
+	# path_app = pathlib.Path(__file__).parent.absolute()
 	utility = CommandUtility(path_app, argv)
 	utility.execute()

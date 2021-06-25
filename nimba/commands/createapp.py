@@ -11,6 +11,7 @@ from nimba.core.exceptions import AppNameIncorrect, CommandError
 
 
 manager_file = """#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import pathlib
 import sys
 
@@ -18,13 +19,13 @@ from app.views import * #import your view
 
 def main():
     try:
-        from nimba.commands import run_command
+        from nimba.commands import mont_nimba
     except ImportError as e:
         raise ImportError(
             "Couldn't import nimba server. Active your environnement"
             "or install nimba framework (ex: pip install nimba-framework)"
         )
-    run_command(sys.argv, pathlib.Path(__file__).parent.absolute())
+    mont_nimba(sys.argv, pathlib.Path(__file__).parent.absolute())
 
 if __name__ == '__main__':
     main()
@@ -85,7 +86,7 @@ class CreateApp:
             f = open(os.path.join(path_application, 'settings.py'), 'w+')
             f.close()
             #copy file
-            with open(os.path.join(path_application, 'nimba.py'), 'w+') as file:
+            with open(os.path.join(path_application, 'mask.py'), 'w+') as file:
                 file.write(manager_file)
             #verify emplacement
             sleep(0.5)

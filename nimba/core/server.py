@@ -34,6 +34,7 @@ class Application:
         self.server_process = None
         self.port = 8000
         self.host = '127.0.0.1'
+        os.environ.setdefault('PROJECT_MASK_PATH', str(path_file))
 
 
     def create_subprocess(self, app_path):

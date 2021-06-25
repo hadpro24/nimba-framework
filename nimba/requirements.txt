@@ -1,4 +1,0 @@
-Jinja2==3.0.0
-MarkupSafe==2.0.0
-watchdog==2.1.2
-mkdocs-material==7.1.8

@@ -9,7 +9,7 @@ def error_404(request, endpoint, path_available):
 		'available_route': path_list,
 		'request': request,
 	}
-	return 'errors/404.html', contexts, 404
+	return 'nimba/errors/404.html', contexts, 404
 
 def error_500(request, endpoint, e):
 	print(f'{e}')
@@ -19,7 +19,7 @@ def error_500(request, endpoint, e):
 		'exceptions': e,
 		'request': request,
 	}
-	return 'errors/500.html', contexts, 500
+	return 'nimba/errors/500.html', contexts, 500
 
 def error_401(request, endpoint, method, e):
 	print(f'UnauthorizedError : Methods {method} Unauthorized')
@@ -28,4 +28,4 @@ def error_401(request, endpoint, method, e):
 		'exceptions': e,
 		'message': method
 	}
-	return 'errors/401.html', contexts, 401
+	return 'nimba/errors/401.html', contexts, 401
