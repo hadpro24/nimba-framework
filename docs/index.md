@@ -26,43 +26,39 @@ $ pip install nimba-framework
 <div class="termy">
 
 ```console
-$ pip install nimba-framework
+$ nimba create --app awesome_app
 ```
 
 </div>
 
-## Example
+### Structure project
 
-* Create a file `main.py` with:
+* `app` - Create a new project.
+    - `views.py` - views
+    - `models.py` - views
+* `staticfiles` - Start the live-reloading docs server.
+* `templates` - Build the documentation site.
+* `settings.py` - Print help message and exit.
+* `mask.py` - Print help message and exit.
 
-```Python
-from typing import Optional
+## Run server
+In your project app `awesome_app`
+<div class="termy">
 
-from fastapi import FastAPI
+```console
+$ python mask.py serve
 
-app = FastAPI()
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+Monitoring for changes...
+Starting server in PID 72932
+June 25, 2021 - 18:04:32
+Serving on http://127.0.0.1:8000
+Quit the server with CONTROL-C.
 ```
 
-## Commands
+</div>
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
 
-## Project layout
+## Licence
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+This project is licensed under the terms of Nimba solution compagny.
+
