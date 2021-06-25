@@ -1,0 +1,8 @@
+include LICENSE
+include README.md
+recursive-include docs *
+recursive-include nimba/templates *
+recursive-include nimba/static *
+recursive-include scripts *
+recursive-include examples *
+recursive-include tests *

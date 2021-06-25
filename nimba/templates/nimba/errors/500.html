@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Error page</title>
+	<link rel="stylesheet" type="text/css" href="{{ load_static('nimba/main.css') }}">
+</head>
+<body>
+	<div class="contenair error_404">
+		<h1>Error (500)</h1>
+		<p>
+			{{ exceptions }}
+		</p>
+		<p>Environnement</p>
+		<ul>
+			{% for k,v in request.environ.items() %}
+				<li> * <i>{{ k }} : {{ v }}</i></li>
+			{% endfor %}
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,8 +1,7 @@
 import urllib.parse
-from cgi import escape
 import cgi
 import ast
-import multipart
+# import multipart
 
 class Request:
 	def __init__(self, environ):
@@ -47,4 +46,3 @@ class Request:
 	@property
 	def method(self):
 		return self._method
-		
