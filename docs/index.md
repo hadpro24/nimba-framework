@@ -16,7 +16,7 @@ The key features are:
 <div class="termy">
 
 ```console
-$ pip install nimba-framework
+$ pip install nimba
 ```
 
 </div>
