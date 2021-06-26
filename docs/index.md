@@ -36,6 +36,7 @@ $ nimba create --app awesome_app
 * `app` - Create a new project.
     - `views.py` - views
     - `models.py` - views
+    - `test.py` - test
 * `staticfiles` - Start the live-reloading docs server.
 * `templates` - Build the documentation site.
 * `settings.py` - Print help message and exit.

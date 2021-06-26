@@ -132,7 +132,8 @@ def router(path, methods=['GET']):
 					try:
 						response =  realCallback(request, *tuple(kwargs))
 					except Exception as e:
-						response = render(*error_500(request, route, traceback.format_exc(100)))
+						traceback.format_exc(100)
+						response = render(*error_500(request, route, e))
 					#check
 					if isinstance(response, str):
 						headers = Headers()
