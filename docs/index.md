@@ -36,6 +36,7 @@ $ nimba create --app awesome_app
 * `app` - Create a new project.
     - `views.py` - views
     - `models.py` - views
+    - `test.py` - test
 * `staticfiles` - Start the live-reloading docs server.
 * `templates` - Build the documentation site.
 * `settings.py` - Print help message and exit.
@@ -57,6 +58,8 @@ Quit the server with CONTROL-C.
 
 </div>
 
+`` Open http://127.0.0.1:8000 in your navigator ``
+![Screenshot](https://github.com/hadpro24/nimba-framework/blob/main/result.png?raw=true)
 
 ## Licence
 

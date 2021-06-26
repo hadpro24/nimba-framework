@@ -101,7 +101,10 @@ def router(path, methods=['GET']):
 				headers.add_header('content-type', ctype)
 				start_response('404 Not Found', headers.items())
 				return [b'Not found']
-			static_path = f"{pathlib.Path(__file__).parent.parent.absolute()}{route}"
+			relative_path = os.path.join(os.path.dirname(__file__), '../')
+			mask_path = str(relative_path)+str(route)
+			project_path = str(os.environ.get(PROJECT_MASK)) + str(route)
+			static_path = mask_path if os.path.exists(mask_path) else project_path
 			# render static files
 			if route.startswith('/static') and os.path.exists(static_path) and not os.path.isdir(static_path):
 				headers  = Headers()
@@ -132,15 +135,20 @@ def router(path, methods=['GET']):
 					try:
 						response =  realCallback(request, *tuple(kwargs))
 					except Exception as e:
-						response = render(*error_500(request, route, traceback.format_exc(100)))
+						traceback.format_exc(100)
+						response = render(*error_500(request, route, e))
 					#check
 					if isinstance(response, str):
 						headers = Headers()
-						ctype   = f'text/plain; charset=utf-8'
+						ctype   = f'text/html; charset=utf-8'
 						headers.add_header('Content-type', ctype)
+						html_render = Template(response)
+						contexts = {}
+						contexts['load_static'] = load_static
+						content_response = io.BytesIO(html_render.render(contexts).encode())
 						response = {
 							'status': '200 OK',
-							'content': io.BytesIO(response.encode()),
+							'content': content_response,
 							'headers': headers,
 						}
 			else:
