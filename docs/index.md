@@ -58,6 +58,8 @@ Quit the server with CONTROL-C.
 
 </div>
 
+`` Open http://127.0.0.1:8000 in your navigator ``
+![Screenshot](https://github.com/hadpro24/nimba-framework/blob/main/result.png?raw=true)
 
 ## Licence
 

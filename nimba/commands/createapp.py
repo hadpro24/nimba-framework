@@ -73,7 +73,7 @@ class CreateApp:
             os.makedirs(path_application)
             os.makedirs(os.path.join(path_application, 'app'))
             os.makedirs(os.path.join(path_application, 'templates'))
-            os.makedirs(os.path.join(path_application, 'staticfiles'))
+            os.makedirs(os.path.join(path_application, 'static'))
             #init
             f = open(os.path.join(path_application, 'app', '__init__.py'), 'w+')
             f.close()

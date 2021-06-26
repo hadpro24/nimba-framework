@@ -1,4 +1,0 @@
-Jinja2==3.0.0
-MarkupSafe==2.0.1
-nimba-framework==0.0.1
-watchdog==2.1.2

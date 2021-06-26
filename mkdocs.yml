@@ -21,8 +21,8 @@ theme:
   - search.highlight
   icon:
     repo: fontawesome/brands/github-alt
-  logo: img/nimba-logo.jpg
-  favicon: img/nimba-logo.jpg
+  logo: img/nimba-logo.png
+  favicon: img/nimba.ico
   language: en
 repo_name: nimba/framework
 repo_url: https://github.com/hadpro24/nimba-framework
