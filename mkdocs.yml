@@ -92,14 +92,8 @@ extra:
   social:
   - icon: fontawesome/brands/github-alt
     link: https://github.com/hadpro24/nimba-framework
-  - icon: fontawesome/brands/discord
-    link: https://discord.gg/VQjSZaeJmf
   - icon: fontawesome/brands/twitter
-    link: https://twitter.com/tiangolo
-  - icon: fontawesome/brands/linkedin
-    link: https://www.linkedin.com/in/tiangolo
-  - icon: fontawesome/brands/dev
-    link: https://dev.to/tiangolo
+    link: https://twitter.com/harouna_gn
 extra_css:
 - css/termynal.css
 - css/custom.css
