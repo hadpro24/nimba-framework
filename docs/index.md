@@ -1,4 +1,7 @@
 # Nimba framework
+<p align="center">
+  <a href="https://docs.nimbasolution.com"><img src="https://github.com/hadpro24/nimba-framework/blob/main/docs/img/nimba-logo.png?raw=true" alt="Nimba Framework" style="width: 200px;"></a>
+</p>
 Everything you need to know about Nimba Framework
 
 
@@ -33,14 +36,14 @@ $ nimba create --app awesome_app
 
 ### Structure project
 
-* `app` - Create a new project.
-    - `views.py` - views
-    - `models.py` - views
-    - `test.py` - test
-* `staticfiles` - Start the live-reloading docs server.
-* `templates` - Build the documentation site.
-* `settings.py` - Print help message and exit.
-* `mask.py` - Print help message and exit.
+* `app` - Your app project, you will spend most of your time here.
+    - `views.py` - Your logic code
+    - `models.py` - Define here the schema of your database
+    - `test.py` - Write your test here
+* `staticfiles` - The static files.
+* `templates` - Your template (html page etc...).
+* `settings.py` - Settings database, secret key and other.
+* `mask.py` - the command utility, start the server, create views and many more.
 
 ## Run server
 In your project app `awesome_app`
@@ -58,7 +61,7 @@ Quit the server with CONTROL-C.
 
 </div>
 
-`` Open http://127.0.0.1:8000 in your navigator ``
+Open <a href="http://127.0.0.1:8000" target="_blank">`http://127.0.0.1:8000`</a> in your navigator
 ![Screenshot](https://github.com/hadpro24/nimba-framework/blob/main/result.png?raw=true)
 
 ## Licence
