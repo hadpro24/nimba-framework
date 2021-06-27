@@ -37,7 +37,7 @@ DEFAULT_DIRECTORY_INDEX_TEMPLATE = """
     </p>
     <hr>
     <p><em>
-      Thanks <a href="nimbasolution.com" target="_blank">Nimba Solution</a> for Licence
+      Thanks <a href="https://nimbasolution.com" target="_blank">Nimba Solution</a> for Licence
     </em></p>
   </div>
 </body>

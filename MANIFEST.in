@@ -1,6 +1,5 @@
 include LICENSE
 include README.md
-recursive-include docs *
 recursive-include nimba/templates *
 recursive-include nimba/staticfiles *
 recursive-include scripts *
