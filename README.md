@@ -1,6 +1,8 @@
 # Nimba framework
 Nimba Framework is a modern, fast (coding), web framework with python.
-> :warning: **This project is private and is still in design, not ready for production**: Create an issue if you encounter any bugs!
+> **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
+
+Everything you need to know about Nimba Framework
 
 <p align="center">
   <a href="https://docs.nimbasolution.com"><img src="https://github.com/hadpro24/nimba-framework/blob/main/docs/img/nimba-logo.png?raw=true" alt="Nimba Framework" style="width: 200px;"></a>
