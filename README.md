@@ -1,5 +1,8 @@
 # Nimba framework
 Nimba Framework is a modern, fast (coding), web framework with python.
+> **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
+
+Everything you need to know about Nimba Framework
 
 <p align="center">
   <a href="https://docs.nimbasolution.com"><img src="https://github.com/hadpro24/nimba-framework/blob/main/docs/img/nimba-logo.png?raw=true" alt="Nimba Framework" style="width: 200px;"></a>
@@ -37,7 +40,7 @@ $ nimba create --app awesome_app
 * `app` - Your app project, you will spend most of your time here.
     - `views.py` - Your logic code
     - `models.py` - Define here the schema of your database
-    - `test.py` - Write your test here
+    - `tests.py` - Write your test here
 * `staticfiles` - The static files.
 * `templates` - Your template (html page etc...).
 * `settings.py` - Settings database, secret key and other.

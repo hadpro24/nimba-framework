@@ -34,7 +34,7 @@ ROUTES = {}
 PROJECT_MASK = 'PROJECT_MASK_PATH'
 
 def load_static(value):
-	return os.path.join('/static/', value)
+	return os.path.join('/staticfiles/', value)
 
 def render(template, contexts=None, status=200, charset='utf-8', content_type='text/html'):
 	"""
@@ -106,7 +106,7 @@ def router(path, methods=['GET']):
 			project_path = str(os.environ.get(PROJECT_MASK)) + str(route)
 			static_path = mask_path if os.path.exists(mask_path) else project_path
 			# render static files
-			if route.startswith('/static') and os.path.exists(static_path) and not os.path.isdir(static_path):
+			if route.startswith('/staticfiles') and os.path.exists(static_path) and not os.path.isdir(static_path):
 				headers  = Headers()
 				mime = mimetypes.MimeTypes().guess_type(static_path)[0]
 				ctype    = f'{mime}; charset=utf-8'
