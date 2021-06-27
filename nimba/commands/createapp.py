@@ -37,6 +37,10 @@ def home(request):
     return "Nimba Framework installed succesfuly!"
 """
 
+import_test = """#write your test here """
+import_models = """#write your models here """
+import_settings = """#all settings application """
+
 class CreateApp:
     """
         Creating app command
@@ -78,12 +82,17 @@ class CreateApp:
             f = open(os.path.join(path_application, 'app', '__init__.py'), 'w+')
             f.close()
             f = open(os.path.join(path_application, 'app', 'models.py'), 'w+')
+            f.write(import_models)
             f.close()
             f = open(os.path.join(path_application, 'app', 'views.py'), 'w+')
             f.write(import_view)
             f.close()
+            f = open(os.path.join(path_application, 'app', 'tests.py'), 'w+')
+            f.write(import_test)
+            f.close()
             #setting
             f = open(os.path.join(path_application, 'settings.py'), 'w+')
+            f.write(import_settings)
             f.close()
             #copy file
             with open(os.path.join(path_application, 'mask.py'), 'w+') as file:
