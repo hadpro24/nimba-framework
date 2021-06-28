@@ -1,6 +1,4 @@
-from nimba.http import router
 
-DEFAULT_DIRECTORY_INDEX_TEMPLATE = """
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,8 +40,3 @@ DEFAULT_DIRECTORY_INDEX_TEMPLATE = """
   </div>
 </body>
 </html>
-"""
-
-@router('/')
-def home_default(request):
-    return DEFAULT_DIRECTORY_INDEX_TEMPLATE

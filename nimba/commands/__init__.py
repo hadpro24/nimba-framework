@@ -4,9 +4,11 @@ import argparse
 import pathlib
 import optparse
 import traceback
+import importlib
 
 from nimba.commands.createapp import CreateApp
 from nimba.core.server import Application
+from wsgiref.validate import validator
 
 class CommandUtility:
 	"""
@@ -21,7 +23,7 @@ class CommandUtility:
 		except IndexError:
 			self.subcommand = 'help'
 
-	def execute(self):
+	def execute(self, app):
 		"""
 			exectue command
 		"""
@@ -51,9 +53,13 @@ class CommandUtility:
 		#runserver
 		if self.subcommand == 'serve':
 			if options.noreload:
-				Application(self.path_app).run('--noreload', options)
+				Application(
+					self.path_app, validator(app)
+				).run('--noreload', options)
 			else:
-				Application(self.path_app).run('--reload', options)
+				Application(
+					self.path_app, validator(app)
+				).run('--reload', options)
 		elif self.subcommand == 'create':
 			app = CreateApp(options.app, self.prog_name)
 			try:
@@ -69,7 +75,10 @@ class CommandUtility:
 
 def mont_nimba(argv, path_app):
 	#create app
-	# argv = sys.argv
-	# path_app = pathlib.Path(__file__).parent.absolute()
+	from nimba.core.welcom import home_default
+	view_module = importlib.import_module('app.views')
+	for attr in dir(view_module):
+		if hasattr(attr, '__call__'):
+			locals()[attr] = getattr(view_module, attr)
 	utility = CommandUtility(path_app, argv)
-	utility.execute()
+	utility.execute(home_default)

@@ -8,14 +8,12 @@ import pathlib
 
 from nimba.commands.base import Loader
 from nimba.core.exceptions import AppNameIncorrect, CommandError
-
+from nimba.core.welcom import DEFAULT_DIRECTORY_INDEX_TEMPLATE
 
 manager_file = """#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pathlib
 import sys
-
-from app.views import * #import your view
 
 def main():
     try:
@@ -30,11 +28,12 @@ def main():
 if __name__ == '__main__':
     main()
 """
-import_view = """from nimba.http import router, render
+
+import_view = f"""from nimba.http import router, render
 
 @router('/')
 def home(request):
-    return "Nimba Framework installed succesfuly!"
+    return render('awesome_app/home.html')
 """
 
 import_test = """#write your test here """
@@ -76,8 +75,12 @@ class CreateApp:
             #create application
             os.makedirs(path_application)
             os.makedirs(os.path.join(path_application, 'app'))
-            os.makedirs(os.path.join(path_application, 'templates'))
-            os.makedirs(os.path.join(path_application, 'static'))
+            os.makedirs(os.path.join(path_application, 'templates/awesome_app'))
+            os.makedirs(os.path.join(path_application, 'staticfiles'))
+            #template
+            f = open(os.path.join(path_application, 'templates/awesome_app', 'home.html'), 'w+')
+            f.write(DEFAULT_DIRECTORY_INDEX_TEMPLATE)
+            f.close()
             #init
             f = open(os.path.join(path_application, 'app', '__init__.py'), 'w+')
             f.close()

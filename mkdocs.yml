@@ -35,32 +35,11 @@ nav:
 - features.md
 - Tutorial - User Guide:
   - tutorial/index.md
-  - tutorial/first-steps.md
   - tutorial/path-params.md
   - tutorial/query-params.md
-  - tutorial/body.md
-  - Dependencies:
-    - tutorial/dependencies/index.md
-    - tutorial/dependencies/classes-as-dependencies.md
-    - tutorial/dependencies/sub-dependencies.md
-    - tutorial/dependencies/dependencies-in-path-operation-decorators.md
-    - tutorial/dependencies/global-dependencies.md
-    - tutorial/dependencies/dependencies-with-yield.md
-  - Security:
-    - tutorial/security/index.md
-    - tutorial/security/first-steps.md
-    - tutorial/security/get-current-user.md
-    - tutorial/security/simple-oauth2.md
-    - tutorial/security/oauth2-jwt.md
-  - tutorial/middleware.md
-  - tutorial/cors.md
-  - tutorial/sql-databases.md
-  - tutorial/bigger-applications.md
-  - tutorial/background-tasks.md
-  - tutorial/metadata.md
-  - tutorial/static-files.md
-  - tutorial/testing.md
-  - tutorial/debugging.md
+  - tutorial/css-style.md
+  - tutorial/post-params.md
+  - tutorial/models.md
 - Advanced User Guide:
   - advanced/index.md
   - advanced/path-operation-advanced-configuration.md
@@ -83,9 +62,6 @@ nav:
   - deployment/index.md
   - deployment/versions.md
   - deployment/https.md
-  - deployment/deta.md
-  - deployment/docker.md
-  - deployment/manually.md
 - contributing.md
 - release-notes.md
 extra:
