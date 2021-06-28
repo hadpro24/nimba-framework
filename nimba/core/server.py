@@ -10,7 +10,6 @@ import argparse
 import sys
 import os
 import importlib
-from wsgiref.validate import validator
 from wsgiref import simple_server
 import optparse
 
@@ -21,19 +20,18 @@ from watchdog.events import LoggingEventHandler
 from watchdog.events import FileSystemEventHandler
 from watchdog.events import PatternMatchingEventHandler
 
-from nimba.core.welcom import home_default
-
 LISTEN_QUEUE = 128
 can_open_by_fd = not platform.system() == "Windows" and hasattr(socket, "fromfd")
 
 class Application:
-    def __init__(self, path_file):
+    def __init__(self, path_file, app_view):
         self.name = '.'.join(str(path_file)[1:].split('/'))
         self.app_path = path_file
         self.httpd = None
         self.server_process = None
         self.port = 8000
         self.host = '127.0.0.1'
+        self.app_view = app_view
         os.environ.setdefault('PROJECT_MASK_PATH', str(path_file))
 
 
@@ -111,7 +109,7 @@ class Application:
     def _serve(self, host, port):
         host, port = host, int(port)
         srv = simple_server.make_server(
-            host, port, validator(home_default)
+            host, port, self.app_view
         )
         print('Starting server in PID %s' % os.getpid())
         self.log_server_status(host, port)

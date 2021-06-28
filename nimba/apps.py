@@ -4,7 +4,8 @@ from nimba.commands import CommandUtility
 
 def mont_nimba():
 	#create app
+	from nimba.core.welcom import home_default
 	argv = sys.argv
 	path_app = pathlib.Path(__file__).parent.absolute()
 	utility = CommandUtility(path_app, argv)
-	utility.execute()
+	utility.execute(home_default)

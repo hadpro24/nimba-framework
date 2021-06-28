@@ -3,8 +3,6 @@
 import pathlib
 import sys
 
-from app.views import * #import your view
-
 def main():
     try:
         from nimba.commands import mont_nimba
