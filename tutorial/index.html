@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Nimba framework, easy to learn, fast to code, ready for production">
+        <meta name="description" content="Nimba framework, easy to learn, fast to code">
       
       
       
@@ -302,9 +302,73 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Parite 1 - Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Parite 1 - Setup
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-nimba" class="md-nav__link">
+    Install Nimba
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-nimba-application" class="md-nav__link">
+    Create nimba application
+  </a>
+  
+    <nav class="md-nav" aria-label="Create nimba application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-project" class="md-nav__link">
+    Structure project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-server" class="md-nav__link">
+    Run server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-other-view" class="md-nav__link">
+    Create other view
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -740,6 +804,55 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-nimba" class="md-nav__link">
+    Install Nimba
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-nimba-application" class="md-nav__link">
+    Create nimba application
+  </a>
+  
+    <nav class="md-nav" aria-label="Create nimba application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-project" class="md-nav__link">
+    Structure project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-server" class="md-nav__link">
+    Run server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-other-view" class="md-nav__link">
+    Create other view
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -752,6 +865,62 @@
                 
                 
                 <h1 id="parite-1-setup">Parite 1 - Setup</h1>
+<blockquote>
+<p><strong>Warning</strong> : This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!</p>
+</blockquote>
+<p>Make sure you have python3.6 +. Let's start by creating a virtual environment.</p>
+<div class="highlight"><pre><span></span><code>$ python --version
+</code></pre></div>
+<h2 id="install-nimba">Install Nimba</h2>
+<div class="highlight"><pre><span></span><code>$ pip install nimba
+</code></pre></div>
+<h2 id="create-nimba-application">Create nimba application</h2>
+<div class="highlight"><pre><span></span><code>$ nimba create --app awesome_app
+</code></pre></div>
+<h3 id="structure-project">Structure project</h3>
+<ul>
+<li><code>app</code> - Your app project, you will spend most of your time here.<ul>
+<li><code>views.py</code> - Your logic code</li>
+<li><code>models.py</code> - Define here the schema of your database</li>
+<li><code>tests.py</code> - Write your test here</li>
+</ul>
+</li>
+<li><code>staticfiles</code> - The static files.</li>
+<li><code>templates</code> - Your template (html page etc...).</li>
+<li><code>settings.py</code> - Settings database, secret key and other.</li>
+<li><code>mask.py</code> - the command utility, start the server, create views and many more.</li>
+</ul>
+<h2 id="run-server">Run server</h2>
+<p>In your project app <code>awesome_app</code></p>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>python mask.py serve
+
+<span class="go">Monitoring for changes...</span>
+<span class="go">Starting server in PID 72932</span>
+<span class="go">June 25, 2021 - 18:04:32</span>
+<span class="go">Serving on http://127.0.0.1:8000</span>
+<span class="go">Quit the server with CONTROL-C.</span>
+</code></pre></div>
+Open <a href="http://127.0.0.1:8000" target="_blank"><code>http://127.0.0.1:8000</code></a></p>
+<p>You cant change port with <code>python mask.py serve -p 7000</code> (runing with port 7000) <br/>
+Or sharing ip <code>python mask.py serve -s 0:7000</code> (0.0.0.0:7000)</p>
+<h2 id="create-other-view">Create other view</h2>
+<p>A view is a python function decorated with an url path, accepting a web request and returning a response. This response can contain html, template, xml etc.</p>
+<p>A simple view returning html code with a decorate path. Open your <code>views.py</code> in your <code>app</code> folder
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nimba.http</span> <span class="kn">import</span> <span class="n">router</span>
+
+<span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/about&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">about</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;h1&gt; Hello, &lt;h2&gt; Welcom to my app page&quot;</span>
+</code></pre></div></p>
+<p>Each life is decorated by a road indicating a path</p>
+<ul>
+<li><code>from nimba.http import router</code> </li>
+<li><code>@router('/about')</code> the router decorator makes your function a view, it receives web requests.</li>
+<li><code>request</code> is the request web content all data get and post</li>
+</ul>
+<p>Open <a href="http://127.0.0.1:8000/about" target="_blank"><code>http://127.0.0.1:8000/about</code></a> <br/></p>
+<hr/>
+<p>Continue to the tutorial <a href="https://docs.nimbasolution.com/tutorial/path-params/" target="_blank">Partie 2 - Endpoint</a></p>
                 
               
               
