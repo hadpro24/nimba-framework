@@ -1,5 +1,5 @@
 site_name: Nimba Framework
-site_description: Nimba framework, easy to learn, fast to code, ready for production
+site_description: Nimba framework, easy to learn, fast to code
 site_url: https://framework.nimbasolution.com/
 theme:
   name: material
@@ -70,6 +70,7 @@ extra:
     link: https://github.com/hadpro24/nimba-framework
   - icon: fontawesome/brands/twitter
     link: https://twitter.com/harouna_gn
+    generator: false
 extra_css:
 - css/termynal.css
 - css/custom.css
@@ -77,3 +78,6 @@ extra_javascript:
 - https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js
 - js/termynal.js
 - js/custom.js
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
