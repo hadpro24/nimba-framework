@@ -488,78 +488,18 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../advanced/additional-responses.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/response-cookies.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/response-headers.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/response-change-status-code.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/advanced-dependencies.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_11" type="checkbox" id="__nav_4_11" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
       
-      <label class="md-nav__link" for="__nav_4_11">
+      <label class="md-nav__link" for="__nav_4_6">
         Advanced Security
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Advanced Security" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_11">
+        <label class="md-nav__title" for="__nav_4_6">
           <span class="md-nav__icon md-icon"></span>
           Advanced Security
         </label>
@@ -583,18 +523,6 @@
   
     <li class="md-nav__item">
       <a href="../../advanced/security/oauth2-scopes.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/security/http-basic-auth.md" class="md-nav__link">
         None
       </a>
     </li>
@@ -625,18 +553,6 @@
   
     <li class="md-nav__item">
       <a href="../../advanced/middleware.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced/sql-databases-peewee.md" class="md-nav__link">
         None
       </a>
     </li>
@@ -779,6 +695,91 @@
 <blockquote>
 <p><strong>Warning</strong> : This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!</p>
 </blockquote>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app/views.py</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nimba.http</span> <span class="kn">import</span> <span class="n">router</span><span class="p">,</span> <span class="n">render</span>
+
+<span class="n">articles</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+
+<span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/articles&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_articles</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">contexts</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;articles&#39;</span><span class="p">:</span> <span class="n">articles</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="s1">&#39;awesome_app/articles.html&#39;</span><span class="p">,</span> <span class="n">contexts</span><span class="p">)</span>
+</code></pre></div>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">templates/awesome_app/articles.html</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My articles&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;List articles&lt;/h1&gt;
+        {% for article in articles %}
+            &lt;div&gt;
+                &lt;h2&gt; {{ article.title }} &lt;/h2&gt;
+                &lt;img src=&quot;{{ article.image }}&quot; alt=&quot;{{ article.title }}&quot;/&gt;
+                &lt;h3&gt; Poster a {{ format_date(article.created_at) }} &lt;/h3&gt;
+                &lt;p&gt; {{ short_text(article.description, 20) }}&lt;/p&gt;
+                &lt;a href=&quot;{{ url(&#39;article&#39;, id=article.id) }}&quot;&gt;see more details&lt;/a&gt;
+            &lt;/div&gt;
+        {% endfor %}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app/views.py</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nimba.http</span> <span class="kn">import</span> <span class="n">router</span><span class="p">,</span> <span class="n">render</span>
+
+<span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/articles/&lt;id:int&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">article</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="c1">#articles variable exists</span>
+    <span class="n">article</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">article</span> <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">article</span> <span class="k">if</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">id</span>
+    <span class="p">]</span>
+    <span class="n">contexts</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;article&#39;</span><span class="p">:</span> <span class="n">article</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="s1">&#39;awesome_app/article.html&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/articles/&lt;id:int&gt;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">templates/awesome_app/article.html</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My articles&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    {{ page.content }}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
 <hr/>
 <p>Continue to the tutorial <a href="https://docs.nimbasolution.com/query-params/" target="_blank">Partie 3 - Query parameters</a></p>
                 
