@@ -20,5 +20,8 @@ jobs:
 install: 
   - pip3 install --upgrade pip  # all three OSes agree about 'pip3'
   - pip install Jinja2==3.0.0 watchdog==2.1.2
-  - pip install .
+  - pip install --user codecov
 script: python3 tests || python tests
+after_success:
+  - codecov -t
+  

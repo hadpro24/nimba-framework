@@ -1,7 +1,59 @@
 import re
 import string
+import uuid
+from functools import lru_cache
+
 from nimba.core.exceptions import ImproperlyRoute
 from nimba.core.exceptions import ImproperlyMethodsConfig
+
+class IntConverter:
+    regex = '[0-9]+'
+
+    def to_python(self, value):
+        return int(value)
+
+    def to_url(self, value):
+        return str(value)
+
+
+class StringConverter:
+    regex = '[^/]+'
+
+    def to_python(self, value):
+        return value
+
+    def to_url(self, value):
+        return value
+
+
+class UUIDConverter:
+    regex = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+
+    def to_python(self, value):
+        return uuid.UUID(value)
+
+    def to_url(self, value):
+        return str(value)
+
+
+class SlugConverter(StringConverter):
+    regex = '[-a-zA-Z0-9_]+'
+
+
+class PathConverter(StringConverter):
+    regex = '.+'
+
+DEFAULT_CONVERTERS = {
+    'int': IntConverter(),
+    'path': PathConverter(),
+    'slug': SlugConverter(),
+    'str': StringConverter(),
+    'uuid': UUIDConverter(),
+}
+
+@lru_cache(maxsize=None)
+def get_converter(raw_converter):
+    return DEFAULT_CONVERTERS[raw_converter]
 
 def resolve_pattern(pattern, callback):
 	original_route = pattern
