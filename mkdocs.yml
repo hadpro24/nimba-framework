@@ -36,28 +36,23 @@ nav:
 - Tutorial - User Guide:
   - tutorial/index.md
   - tutorial/path-params.md
-  - tutorial/query-params.md
   - tutorial/css-style.md
+  - tutorial/query-params.md
   - tutorial/post-params.md
   - tutorial/models.md
+  - tutorial/forms.md
+  - tutorial/deployment.md
 - Advanced User Guide:
   - advanced/index.md
   - advanced/path-operation-advanced-configuration.md
   - advanced/additional-status-codes.md
   - advanced/response-directly.md
   - advanced/custom-response.md
-  - advanced/additional-responses.md
-  - advanced/response-cookies.md
-  - advanced/response-headers.md
-  - advanced/response-change-status-code.md
-  - advanced/advanced-dependencies.md
   - Advanced Security:
     - advanced/security/index.md
     - advanced/security/oauth2-scopes.md
-    - advanced/security/http-basic-auth.md
   - advanced/using-request-directly.md
   - advanced/middleware.md
-  - advanced/sql-databases-peewee.md
 - Deployment:
   - deployment/index.md
   - deployment/versions.md
@@ -70,7 +65,7 @@ extra:
     link: https://github.com/hadpro24/nimba-framework
   - icon: fontawesome/brands/twitter
     link: https://twitter.com/harouna_gn
-    generator: false
+  generator: false
 extra_css:
 - css/termynal.css
 - css/custom.css
@@ -81,3 +76,11 @@ extra_javascript:
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - smarty
+  - toc:
+    permalink: true
+  - markdown.extensions.codehilite:
+    guess_lang: false
+  

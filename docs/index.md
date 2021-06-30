@@ -6,14 +6,14 @@
 
 Everything you need to know about Nimba Framework
 
-Nimba Framework is a modern, fast (coding), web framework with Python 3.6+.
+Nimba Framework is a modern, fast coding, web framework with Python 3.6+.
 
 The key features are:
 
 * **Fast to code**: Increase the speed to develop features. *
-* **Intuitive**: Great editor support. <abbr title="also known as auto-complete, autocompletion, IntelliSense">Completion</abbr> everywhere. Less time debugging.
+* **Intuitive**: Excellent editor support. Quick understanding. Less debugging time..
 * **Easy**: Designed to be easy to use and learn. Less time reading docs.
-* **Short**: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
+* **Short**: Minimizes code duplication. Multiple functionalities. Fewer bugs.
 
 ## Installation
 
