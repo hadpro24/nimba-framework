@@ -695,6 +695,101 @@
 <blockquote>
 <p><strong>Warning</strong> : This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!</p>
 </blockquote>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">templates/awesome_app/films.html</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My articles<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ load_static(&#39;awesome_app/css/main.css&#39;) }}&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>List films<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;films-list&quot;</span> <span class="p">&gt;</span>
+        {% for film in films %}
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card-film&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;image&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">img</span> 
+                        <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://raw.githubusercontent.com/hadpro24/googlechallenge-phase-1-backend/master/media/{{ film.image }}&quot;</span> 
+                        <span class="na">alt</span><span class="o">=</span><span class="s">&quot;{{ film.title }}&quot;</span><span class="p">/&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;description&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ film.title }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Year of production : <span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>{{ film.released }}<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;button-two&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;button-favoir-and-details&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/films/{{ film.id }}&quot;</span><span class="p">&gt;</span>Details<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        {% endfor %}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">templates/awesome_app/film_detail.html</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ article.title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ load_static(&#39;awesome_app/css/main.css&#39;) }}&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+        <span class="p">.</span><span class="nc">contenair</span><span class="p">{</span>
+          <span class="k">width</span><span class="p">:</span> <span class="mi">85</span><span class="kt">%</span><span class="p">;</span>
+          <span class="k">margin</span><span class="p">:</span><span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
+          <span class="k">margin-top</span><span class="p">:</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span>
+
+          <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+          <span class="k">justify-content</span><span class="p">:</span> <span class="kc">space-between</span><span class="p">;</span>
+          <span class="k">font-family</span><span class="p">:</span> <span class="n">helvetica</span><span class="p">,</span> <span class="n">tahoma</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+          <span class="k">text-align</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="p">.</span><span class="nc">data-film</span><span class="p">{</span>
+          <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">.</span><span class="nc">info</span> <span class="nt">p</span><span class="p">{</span>
+          <span class="k">line-height</span><span class="p">:</span> <span class="mi">27</span><span class="kt">px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="p">.</span><span class="nc">info</span> <span class="nt">p</span> <span class="nt">span</span><span class="p">{</span>
+            <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="p">.</span><span class="nc">info</span> <span class="nt">p</span> <span class="nt">h3</span><span class="p">{</span>
+          <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="p">.</span><span class="nc">couverture</span><span class="p">{</span>
+          <span class="k">margin-left</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contenair&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;data-film&quot;</span><span class="p">&gt;</span>
+             <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;info&quot;</span><span class="p">&gt;</span>
+                  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/films&quot;</span><span class="p">&gt;</span>Back to list<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ film.title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+                        {{ film.description }}
+                    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Released to : <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ film.released }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Runtime : <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ film.runtime }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Rated : <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ film.rated }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Languages : <span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ film.country }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+             <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+             <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;image&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;couverture&quot;</span><span class="p">&gt;</span>
+                  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://raw.githubusercontent.com/hadpro24/googlechallenge-phase-1-backend/master/media/{{ film.image }}&quot;</span> 
+                  <span class="na">alt</span><span class="o">=</span><span class="s">&quot;{{ film.title }}&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;450&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+             <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>In the part, we code the links in hard. we are going to change that.</p>
 <hr/>
 <p>Continue to the tutorial <a href="https://docs.nimbasolution.com/query-params/" target="_blank">Partie 4 - Query parameters</a></p>
                 
