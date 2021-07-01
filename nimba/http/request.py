@@ -17,7 +17,8 @@ class Request:
 			self.request_body = self.environ['wsgi.input'].read(self.request_body_size)
 		else:
 			post = cgi.FieldStorage(fp=environ['wsgi.input'], environ=environ, keep_blank_values=True)
-			print('humm...', post)
+			self.fields = dict(post)
+			#print('humm...', post)
 			
 			# environ.setdefault('QUERY_STRING', '')
 			# multipart_headers = {'Content-Type': environ['CONTENT_TYPE']}
@@ -37,7 +38,7 @@ class Request:
 
 	@property
 	def POST(self):
-		return {k.decode('utf-8'): v.decode() for k,v in self.fields.items()}
+		return {k: v.value for k,v in self.fields.items()}
 
 	@property
 	def FILES(self):

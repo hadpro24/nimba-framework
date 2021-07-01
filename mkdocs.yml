@@ -79,8 +79,4 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.superfences
   - smarty
-  - toc:
-    permalink: true
-  - markdown.extensions.codehilite:
-    guess_lang: false
   

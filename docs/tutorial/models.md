@@ -3,4 +3,4 @@
 
 soon...
 <hr/>
-Continue to the tutorial <a href="https://docs.nimbasolution.com/query-params/" target="_blank">Partie 7 - Forms</a>
+Continue to the tutorial <a href="https://docs.nimbasolution.com/tutorial/forms/" target="_blank">Partie 7 - Forms</a>

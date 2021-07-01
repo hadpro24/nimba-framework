@@ -3,4 +3,4 @@
 
 soon....
 <hr/>
-Continue to the tutorial <a href="https://docs.nimbasolution.com/query-params/" target="_blank">Partie 8 - Deployment</a>
+Continue to the tutorial <a href="https://docs.nimbasolution.com/tutorial/deployment/" target="_blank">Partie 8 - Deployment</a>
