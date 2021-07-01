@@ -1,8 +1,3 @@
-# Partie 5 - POST data
-> **Warning** : This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
-
-=== "templates/awesome_app/detail_film.html"
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,27 +72,3 @@
 	</div>
 </body>
 </html>
-
-```
-
-=== "app/views.py"
-```python
-@router('/films/<int:id>', methods=['GET', 'POST'])
-def film_detail(request, id):
-    film = {
-        'data': film for film in films if film['id'] == id
-    }
-    if not film.get('data'):
-        return "Film does not exist"
-    # post data
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        comment = request.POST.get('comment')
-        print(name, comment)
-    contexts = {
-        'film': film['data'],
-    }
-    return render('awesome_app/detail_film.html', contexts)
-```
-<hr/>
-Continue to the tutorial <a href="https://docs.nimbasolution.com/tutorial/models/">Partie 6 - Models</a>

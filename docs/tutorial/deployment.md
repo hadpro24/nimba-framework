@@ -3,4 +3,4 @@
 
 soon...
 <hr/>
-Continue Advenced concept <a href="https://docs.nimbasolution.com/query-params/" target="_blank">Nimba Advenced</a>
+Continue Advenced concept <a href="#https://docs.nimbasolution.com/query-params/" target="_blank">Nimba Advenced</a>

@@ -1,8 +1,3 @@
-# Partie 4 - Query parameters
-> **Warning** : This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
-
-=== "templates/awesome_app/films.html"
-```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -41,28 +36,3 @@
     	</div>
   </body>
 </html>
-
-```
-
-=== "app/views.py"
-```python
-from nimba.http import router, render
-
-@router('/')
-def home(request):
-    search = request.GET.get('search', '')
-    films_filter = [
-        film for film in films if search in ' '.join(
-            [film['title'], film['description'], film['country']]
-        )
-    ] if search else films
-    contexts = {
-        'films': films_filter,
-        'search': search,
-    }
-    return render('awesome_app/list_films.html', contexts)
-
-```
-
-<hr/>
-Continue to the tutorial <a href="https://docs.nimbasolution.com/tutorial/post-params/" target="_blank">Partie 5 - POST data</a>

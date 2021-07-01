@@ -11,13 +11,14 @@ def error_404(request, endpoint, path_available):
 	}
 	return 'nimba/errors/404.html', contexts, 404
 
-def error_500(request, endpoint, e):
+def error_500(request, endpoint, e, print_e):
 	print(f'{e}')
 	contexts = {
 		'page_name': endpoint,
 		'error_in_view': True,
 		'exceptions': e,
 		'request': request,
+		'e': str(type(print_e).__name__)+': '+str(print_e),
 	}
 	return 'nimba/errors/500.html', contexts, 500
 
