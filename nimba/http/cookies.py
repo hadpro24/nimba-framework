@@ -1,5 +1,6 @@
 from http.cookies import SimpleCookie as SimpleCookie
 from http import cookies
+import datetime
 
 def set_cookie_header(name, value, days=30):
     dt = datetime.datetime.now() + datetime.timedelta(days=days)
