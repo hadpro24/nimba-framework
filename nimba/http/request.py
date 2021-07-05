@@ -3,12 +3,16 @@ import cgi
 import ast
 # import multipart
 
+# from nimba.http.cookies import SimpleCookie, set_cookie_header
+
 class Request:
 	def __init__(self, environ):
 		self.environ = environ
 		self._method = self.environ['REQUEST_METHOD'].upper()
 		self.fields = {}
 		self.files  = {}
+		# self.cookies = SimpleCookie()
+		self.COOKIES = {}
 		if self._method == 'GET':
 			try:
 				self.request_body_size = int(environ.get('CONTENT_LENGTH', 0))
@@ -47,3 +51,11 @@ class Request:
 	@property
 	def method(self):
 		return self._method
+
+	# def set_coookie(self, key, value='', max_age=None, expires=None, 
+	# 	path='/', secure=False, ):
+	# 	"""
+	# 		set cookies
+	# 	"""
+	# 	self.cookies[key] = value
+	#	self.cookies[key]['httponly'] = True
