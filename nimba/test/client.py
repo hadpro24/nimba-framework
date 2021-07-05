@@ -12,6 +12,7 @@ import urllib
 import urllib.request
 import logging
 import http.client
+import json
 
 from nimba.http.request import Request
 from nimba.http.response import Response
