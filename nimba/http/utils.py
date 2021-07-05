@@ -41,7 +41,7 @@ def render(template, contexts=None, status=200, charset='utf-8', content_type='t
 		Rendering template
 	"""
 	contexts = contexts or {}
-
+	os.environ.setdefault(PROJECT_MASK, 'wrong-template')
 	relative_path = os.path.join(os.path.dirname(__file__), '../')
 	mask_path = os.path.join(relative_path, f'templates/{template}')
 	project_path = os.path.join(os.environ.get(PROJECT_MASK), f'templates/{template}')

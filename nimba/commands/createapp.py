@@ -45,12 +45,12 @@ class CreateApp:
         Creating app command
     """
     def __init__(self, app_label, path_to_create):
-        self.app_label = app_label
+        self.app_label = f'{app_label}'
         self.path_to_create = path_to_create
 
     def handle(self):
         #check name application
-        if not self.app_label or not self.app_label.isidentifier():
+        if not self.app_label or not self.app_label.isidentifier() or self.app_label == 'None':
             raise AppNameIncorrect(
                 "AppNameIncorrect: Your name '{name}' is not a valid app name. Please make sure the "
                 "app name is a valid identifier.".format(

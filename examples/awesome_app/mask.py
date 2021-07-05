@@ -3,6 +3,8 @@
 import pathlib
 import sys
 
+from nimba.core.welcom import home_default as application
+
 def main():
     try:
         from nimba.commands import mont_nimba

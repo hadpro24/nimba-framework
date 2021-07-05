@@ -72,13 +72,23 @@ class CommandUtility:
 			from nimba import __version__
 			print(f"Nimba Framework {__version__}")
 			print("Nimba Solution Compagny all rights reserved.")
+			sys.exit(2)
+
+	def __call__(self):
+		#load views app
+		from nimba.core.welcom import home_default
+		try:
+			view_module = importlib.import_module(
+				os.environ.get('APP_MASK_VIEW', 'app.views')
+			)
+			for attr in dir(view_module):
+				if hasattr(attr, '__call__'):
+					locals()[attr] = getattr(view_module, attr)
+		except ModuleNotFoundError:
+			print("Warning: The 'app' or 'views' module not found. Check the structure of your application. Or use mask.py in your application to run server.")
+		finally:
+			self.execute(home_default)
 
 def mont_nimba(argv, path_app):
-	#create app
-	from nimba.core.welcom import home_default
-	view_module = importlib.import_module('app.views')
-	for attr in dir(view_module):
-		if hasattr(attr, '__call__'):
-			locals()[attr] = getattr(view_module, attr)
 	utility = CommandUtility(path_app, argv)
-	utility.execute(home_default)
+	utility()
