@@ -75,10 +75,10 @@ class CreateApp:
             #create application
             os.makedirs(path_application)
             os.makedirs(os.path.join(path_application, 'app'))
-            os.makedirs(os.path.join(path_application, 'templates/awesome_app'))
+            os.makedirs(os.path.join(path_application, f'templates/{self.app_label}'))
             os.makedirs(os.path.join(path_application, 'staticfiles'))
             #template
-            f = open(os.path.join(path_application, 'templates/awesome_app', 'home.html'), 'w+')
+            f = open(os.path.join(path_application, f'templates/{self.app_label}', 'home.html'), 'w+')
             f.write(DEFAULT_DIRECTORY_INDEX_TEMPLATE)
             f.close()
             #init
