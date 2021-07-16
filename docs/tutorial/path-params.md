@@ -93,7 +93,7 @@ def list_films(request):
 ```python
 from nimba.http import router, render
 
-@router('/films/<id:int>')
+@router('/films/<int:id>')
 def film_detail(request, id):
 	#films variable exists
 	film = {
@@ -109,7 +109,7 @@ def film_detail(request, id):
 ```
 
 ```python
-@router('/films/<id:int>')
+@router('/films/<int:id>')
 ```
 
 
@@ -118,7 +118,7 @@ def film_detail(request, id):
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ article.title }}</title>
+    <title>{{ film.title }}</title>
   </head>
   <body>
     <div class="contenair">

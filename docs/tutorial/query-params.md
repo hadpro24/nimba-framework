@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My articles</title>
+    <title>My films</title>
   </head>
   <link rel="stylesheet" type="text/css" href="{{ load_static('awesome_app/css/main.css') }}">
   <body class="contenair">
