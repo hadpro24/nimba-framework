@@ -1,0 +1,9 @@
+[run]
+omit =
+        *__init__*
+        */usr/local/lib*
+        */home/harouna/.local*
+        *env/lib*
+        *docs/*
+        *docs_code/*
+        *setup.py*

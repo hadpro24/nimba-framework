@@ -54,9 +54,6 @@ class TestCommandUtility(unittest.TestCase):
 
 	@patch('sys.stdout', new_callable=io.StringIO)
 	def test_run_mask_only(self, mock):
-		#test
-		if not os.path.exists(self.path_app):
-			raise AssertionError(f"applicaton {self.valid_app_name_test} not exist")
 		#set default
 		with self.assertRaises(SystemExit) as error:
 			os.environ.setdefault("APP_MASK_VIEW", "app_test.app.views")
@@ -163,5 +160,4 @@ class TestCommandUtility(unittest.TestCase):
 			shutil.rmtree(self.path_app)
 		except Exception as e:
 			print("Error: %s - %s." % (e.filename, e.strerror))
-
-
+			
