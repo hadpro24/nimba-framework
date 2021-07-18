@@ -1,4 +1,8 @@
 # Nimba framework
+![https://github.com/hadpro24/nimba-framework/actions](https://github.com/hadpro24/nimba-framework/actions/workflows/test.yml/badge.svg)
+![https://pypi.org/project/nimba/](https://img.shields.io/pypi/v/nimba.svg)
+![https://pypi.org/project/nimba/](https://img.shields.io/pypi/l/nimba.svg)
+
 Nimba Framework is a modern, fast coding, web framework with python.
 > **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
 

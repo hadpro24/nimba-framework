@@ -13,6 +13,7 @@ import urllib.request
 import logging
 import http.client
 import json
+from collections import namedtuple
 
 from nimba.http.request import Request
 from nimba.http.response import Response
@@ -157,4 +158,5 @@ class TestCase(unittest.TestCase):
         """
         # should_encode = JSON_CONTENT_TYPE_RE.match(content_type) and isinstance(data, (dict, list, tuple))
         return str(json.dumps(data)).encode('utf-8')
+
 
