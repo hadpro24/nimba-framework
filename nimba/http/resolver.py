@@ -84,7 +84,7 @@ def resolve_pattern(pattern, callback):
 	return ''.join(parts), converters
 
 
-def check_pattern(pattern):
+def check_pattern(pattern:str) -> None:
 	if not isinstance(pattern, str):
 		raise ImproperlyRoute(f'Invalid format URL {pattern}. The must be a string.')
 	if not set(pattern).isdisjoint(string.whitespace):
@@ -93,6 +93,11 @@ def check_pattern(pattern):
 		raise ImproperlyRoute(f'[Error] - Your URL pattern {pattern} has not a route beginning with a '/'. Add this')
 
 
-def is_valid_method(methods):
+def is_valid_method(methods:list) -> None:
 	if not isinstance(methods, list) or len(methods) > 2 or len(methods) < 0:
 		raise ImproperlyMethodsConfig('ErrorConfig : methods must be list and use the valid element GET or POST.')
+
+
+def reverse(name_path:str) -> str:
+	pass
+	

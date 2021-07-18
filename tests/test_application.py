@@ -7,11 +7,13 @@ from unittest.mock import patch
 from nimba.core.server import Application
 from nimba.core.welcom import home_default
 
-def simple_app(environ, start_response):
-	status = '200 Ok'
-	headers = [('Content-Type', 'text/html')]
-	start_response(status, headers)
-	return iter("Test app")
+from nimba.http import router, render
+
+TEST = 'test'
+
+@router('/')
+def home(request):
+	return TEST
 
 def get_free_port():
     """Finds an available TCP/IP port"""
@@ -25,7 +27,7 @@ class TestApplication(unittest.TestCase):
 	def setUp(self):
 		self.application = Application(
 			pathlib.Path(__file__).parent.absolute(),
-			simple_app,
+			home,
 		)
 
 	@patch('subprocess.Popen')
