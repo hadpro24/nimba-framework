@@ -31,8 +31,7 @@ jobs:
         run: |
           coverage run -m tests
           coverage report -i
-    steps:
-      - name: "Upload coverage to Codecov"
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
