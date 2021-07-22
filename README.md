@@ -1,5 +1,6 @@
 # Nimba framework
 ![https://github.com/hadpro24/nimba-framework/actions](https://github.com/hadpro24/nimba-framework/actions/workflows/test.yml/badge.svg)
+![https://github.com/hadpro24/nimba-framework](https://img.shields.io/codecov/c/github/hadpro24/nimba-framework?color=%2334D058)
 ![https://pypi.org/project/nimba/](https://img.shields.io/pypi/v/nimba.svg)
 ![https://pypi.org/project/nimba/](https://img.shields.io/pypi/l/nimba.svg)
 ![https://pypi.org/project/nimba/](https://img.shields.io/pypi/pyversions/nimba)
