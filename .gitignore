@@ -128,3 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 site/
+
+[user]
+    name = Harouna Diallo
+    email = dev.harouna@gmail.com
+    
