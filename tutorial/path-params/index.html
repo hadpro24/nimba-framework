@@ -783,7 +783,7 @@
 </div>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nimba.http</span> <span class="kn">import</span> <span class="n">router</span><span class="p">,</span> <span class="n">render</span>
 
-<span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/films/&lt;id:int&gt;&#39;</span><span class="p">)</span>
+<span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/films/&lt;int:id&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">film_detail</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
     <span class="c1">#films variable exists</span>
     <span class="n">film</span> <span class="o">=</span> <span class="p">{</span>
@@ -796,14 +796,14 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="s1">&#39;awesome_app/film_detail.html&#39;</span><span class="p">,</span> <span class="n">film</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/films/&lt;id:int&gt;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/films/&lt;int:id&gt;&#39;</span><span class="p">)</span>
 </code></pre></div>
 <div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">templates/awesome_app/film_detail.html</label><div class="tabbed-content"></div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ article.title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ film.title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contenair&quot;</span><span class="p">&gt;</span>
