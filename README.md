@@ -5,7 +5,7 @@
 ![https://pypi.org/project/nimba/](https://img.shields.io/pypi/l/nimba.svg)
 ![https://pypi.org/project/nimba/](https://img.shields.io/pypi/pyversions/nimba)
 
-Nimba Framework is a modern, fast coding, web framework with python.
+Nimba Framework is a fast coding, web framework with python.
 > **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
 
 Everything you need to know about Nimba Framework
@@ -13,11 +13,16 @@ Everything you need to know about Nimba Framework
 <p align="center">
   <a href="https://docs.nimbasolution.com"><img src="https://github.com/hadpro24/nimba-framework/blob/main/docs/img/nimba-logo.png?raw=true" alt="Nimba Framework" style="width: 200px;"></a>
 </p>
+  
+  
+ <em style="font-size:5px">The mask represents the fertility goddess, D'mba. Ansoumane presented the mask to his people, the Baga people, who welcomed him and adopted him as their protector; it thus became the symbol of its cultural identity.
+  </em>
+  
 
 The key features are:
 
 * **Fast to code**: Increase the speed to develop features. *
-* **Intuitive**: Excellent editor support. Quick understanding. Less debugging time..
+* **Intuitive**: Quick understanding. Less debugging time..
 * **Easy**: Designed to be easy to use and learn. Less time reading docs.
 * **Short**: Minimizes code duplication. Multiple functionalities. Fewer bugs.
 
