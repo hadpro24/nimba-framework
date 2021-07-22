@@ -97,7 +97,4 @@ def is_valid_method(methods:list) -> None:
 	if not isinstance(methods, list) or len(methods) > 2 or len(methods) < 0:
 		raise ImproperlyMethodsConfig('ErrorConfig : methods must be list and use the valid element GET or POST.')
 
-
-def reverse(name_path:str) -> str:
-	pass
 	

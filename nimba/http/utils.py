@@ -4,6 +4,7 @@ import re
 import http.client
 from wsgiref.headers import Headers
 import pathlib
+import urllib.parse
 
 import traceback
 import mimetypes
@@ -29,9 +30,43 @@ from nimba.http.errors import (
 	error_404,
 	error_500
 )
+from nimba.core.exceptions import (
+	NoReverseFound
+)
 
 ROUTES = {}
+REVERSE_ROUTE_INFO = {}
 PROJECT_MASK = 'PROJECT_MASK_PATH'
+
+def path_reverse(name_path:str, args=None, kwargs=None) -> str:
+	if not isinstance(name_path, str) or not re.match(r"^[^\d\W][\w-]*\Z", name_path):
+			raise ValueError("Name path must but a valid identifier name.")
+	args = args or {}
+	kwargs = kwargs or {}
+	if args and kwargs:
+		raise ValueError(("Don't use *args and **kwargs."
+			"*args is for get and **kwargs for post method."))
+	path = REVERSE_ROUTE_INFO.get(name_path)
+	if not path:
+		raise NoReverseFound(f"Reverse for {name_path} not found.")
+	
+	if args:
+		path = path +'?'+ urllib.parse.urlencode(args)
+	else:
+		regex = r'<(?:(?P<converter>[^>:]+):)?(?P<parameter>[^>]+)>'
+		url  = re.compile(regex, 0)
+		helper_path = path
+		for match in url.finditer(path):
+			value = kwargs.get(match['parameter'])
+			if not value:
+				raise NoReverseFound((f"Reverse for {name_path} not found. " 
+					"Keyword arguments '%s' not found." % match['parameter']))
+			path = re.sub(
+				helper_path[match.start():match.end()], 
+				str(value), 
+				path
+			)
+	return path	
 
 def load_static(value):
 	return os.path.join('/staticfiles/', value)
@@ -58,6 +93,7 @@ def render(template, contexts=None, status=200, charset='utf-8', content_type='t
 	)
 	#load env jinja2
 	contexts['load_static'] = load_static
+	contexts['path_reverse'] = path_reverse
 	with open(path, 'r') as content_file:
 		content = content_file.read()
 		html_render = env.from_string(content)
@@ -75,7 +111,7 @@ def render(template, contexts=None, status=200, charset='utf-8', content_type='t
 	return response
 
 
-def router(path, methods=['GET']):
+def router(path, methods=['GET'], name=None):
 	"""
 		Routing app
 	"""
@@ -87,6 +123,9 @@ def router(path, methods=['GET']):
 		#format url value url
 		new_path, converters = resolve_pattern(path, callback)
 		ROUTES[new_path] = (callback, converters, path, methods)
+
+		# if: pass
+		REVERSE_ROUTE_INFO[name or callback.__name__] = path
 		def application(environ, start_response):
 			request = Request(environ)
 			#authorized

@@ -55,7 +55,7 @@ from nimba.http import router
 
 @router('/about')
 def about(request):
-	return "<h1> Hello, <h2> Welcom to my app page"
+	return "<h1> Hello, World </h1>"
 ```
 
 Each life is decorated by a road indicating a path
