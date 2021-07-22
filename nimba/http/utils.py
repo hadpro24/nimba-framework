@@ -39,7 +39,7 @@ REVERSE_ROUTE_INFO = {}
 PROJECT_MASK = 'PROJECT_MASK_PATH'
 
 def path_reverse(name_path:str, args=None, kwargs=None) -> str:
-	if not isinstance(name_path, str) or not name_path.isascii():
+	if not isinstance(name_path, str) or not re.match(r"^[^\d\W][\w-]*\Z", name_path):
 			raise ValueError("Name path must but a valid identifier name.")
 	args = args or {}
 	kwargs = kwargs or {}
