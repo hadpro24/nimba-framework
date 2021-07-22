@@ -14,3 +14,7 @@ class AppNameIncorrect(Exception):
 
 class CommandError(Exception):
 	pass
+
+class NoReverseFound(Exception):
+	pass
+	
