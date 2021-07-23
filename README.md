@@ -1,9 +1,9 @@
 # Nimba framework
-![https://github.com/hadpro24/nimba-framework/actions](https://github.com/hadpro24/nimba-framework/actions/workflows/test.yml/badge.svg)
-![https://github.com/hadpro24/nimba-framework](https://img.shields.io/codecov/c/github/hadpro24/nimba-framework)
-![https://pypi.org/project/nimba/](https://img.shields.io/pypi/v/nimba.svg)
-![https://pypi.org/project/nimba/](https://img.shields.io/pypi/l/nimba.svg)
-![https://pypi.org/project/nimba/](https://img.shields.io/pypi/pyversions/nimba)
+[![CI](https://github.com/hadpro24/nimba-framework/actions/workflows/test.yml/badge.svg)](https://github.com/hadpro24/nimba-framework/actions)
+[![coverage](https://img.shields.io/codecov/c/github/hadpro24/nimba-framework)](https://github.com/hadpro24/nimba-framework)
+[![pypi](https://img.shields.io/pypi/v/nimba.svg)](https://pypi.org/project/nimba/)
+[![pypi](https://img.shields.io/pypi/l/nimba.svg)](https://pypi.org/project/nimba/)
+[![pypi](https://img.shields.io/pypi/pyversions/nimba)](https://pypi.org/project/nimba/)
 
 Nimba Framework is a fast coding, web framework with python.
 > **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
