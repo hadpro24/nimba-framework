@@ -38,7 +38,7 @@ ROUTES = {}
 REVERSE_ROUTE_INFO = {}
 PROJECT_MASK = 'PROJECT_MASK_PATH'
 
-def path_reverse(name_path:str, args=None, kwargs=None) -> str:
+def reverse(name_path:str, args=None, kwargs=None) -> str:
 	if not isinstance(name_path, str) or not re.match(r"^[^\d\W][\w-]*\Z", name_path):
 			raise ValueError("Name path must but a valid identifier name.")
 	args = args or {}
@@ -93,7 +93,7 @@ def render(template, contexts=None, status=200, charset='utf-8', content_type='t
 	)
 	#load env jinja2
 	contexts['load_static'] = load_static
-	contexts['path_reverse'] = path_reverse
+	contexts['reverse'] = reverse
 	with open(path, 'r') as content_file:
 		content = content_file.read()
 		html_render = env.from_string(content)

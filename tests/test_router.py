@@ -9,7 +9,7 @@ import pytest
 import shutil
 from unittest.mock import patch
 
-from nimba.http import router, render, path_reverse
+from nimba.http import router, render, reverse
 from nimba.core.server import Application
 from nimba.core.exceptions import NoReverseFound
 
@@ -85,49 +85,49 @@ class TestRouterRender(TestCase):
 		self.assertEqual(200, response['status_code'])
 		self.assertIn("hello, world", response['text'])
 
-	def test_path_reverse_with_function_name(self):
-		url = path_reverse('about')
+	def test_reverse_with_function_name(self):
+		url = reverse('about')
 		response = self.get(url)
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual(TEST, response['text'])
 
-	def test_path_reverse_with_name(self):
-		url = path_reverse('articles')
+	def test_reverse_with_name(self):
+		url = reverse('articles')
 		response = self.get(url)
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual(TEST, response['text'])
 
-	def test_path_reverse_with_name_and_kwargs(self):
+	def test_reverse_with_name_and_kwargs(self):
 		#error type name path
 		with self.assertRaises(ValueError) as error:
-			path_reverse(57885)
+			reverse(57885)
 		self.assertEqual(str(error.exception), "Name path must but a valid identifier name.")
 		#bad name give
 		invalid_path = 'invalid-article'
 		with self.assertRaises(NoReverseFound) as error:
-			path_reverse(invalid_path)
+			reverse(invalid_path)
 		self.assertEqual(str(error.exception), f"Reverse for {invalid_path} not found.")
 		#give kwargs and args
 		with self.assertRaises(ValueError) as error:
-			path_reverse('article', kwargs={'id': 5}, args={'name': 'test'})
+			reverse('article', kwargs={'id': 5}, args={'name': 'test'})
 		self.assertEqual(str(error.exception), ("Don't use *args and **kwargs."
 			"*args is for get and **kwargs for post method."))
 		#invalid parmas name
 		invalid_params = 'id_wrong'
 		with self.assertRaises(NoReverseFound) as error:
-			path_reverse('article', kwargs={invalid_params: 5})
+			reverse('article', kwargs={invalid_params: 5})
 		self.assertEqual(str(error.exception), ("Reverse for article not found. " 
 					"Keyword arguments 'id' not found."))
 		#valid
 		_id = 5
-		url = path_reverse('article', kwargs={'id': _id})
+		url = reverse('article', kwargs={'id': _id})
 		response = self.get(url)
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual(str(_id), response['text'])
 
-	def test_path_reverse_with_args(self):
+	def test_reverse_with_args(self):
 		name = 'Harouna Diallo'
-		url = path_reverse('info', args={'name': name})
+		url = reverse('info', args={'name': name})
 		response = self.get(url)
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual(name, response['text'])
