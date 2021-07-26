@@ -25,7 +25,7 @@
 					    	<h3>{{ film.title }}</h3>
 					    	<h5><strong><em>Year of production : </em></strong>{{ film.released }}</h5>
 					    	<div class="button-two">
-					    		<a type="button" class="button-favoir-and-details" href="/films/{{ film.id }}">Details</a>
+					    		<a type="button" class="button-favoir-and-details" href="{{ reverse('film', id=film.id) }}">Details</a>
 					    	</div>
 				    	</div>
 				    </div>

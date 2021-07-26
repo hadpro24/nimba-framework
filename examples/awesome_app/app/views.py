@@ -43,11 +43,7 @@ films = [
     },
 ]
 
-@router('/')
-def home(request):
-    return render('awesome_app/home.html')
-
-@router('/films')
+@router('/', name='home')
 def home(request):
     search = request.GET.get('search', '')
     films_filter = [
@@ -61,7 +57,7 @@ def home(request):
     }
     return render('awesome_app/list_films.html', contexts)
 
-@router('/films/<int:id>', methods=['GET', 'POST'])
+@router('/films/<int:id>', methods=['GET', 'POST'], name='film')
 def film_detail(request, id):
     film = {
         'data': film for film in films if film['id'] == id
