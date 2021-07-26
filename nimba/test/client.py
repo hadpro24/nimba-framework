@@ -120,7 +120,8 @@ class TestCase(unittest.TestCase):
             query_string = urllib.parse.urlencode(data)
             url = path+'?'+query_string
         else:
-            url = path
+            url = urllib.parse.quote(path)
+            
         url = self.base_url+url
         res = {}
         f = open(os.devnull, 'w')
