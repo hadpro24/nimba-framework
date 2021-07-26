@@ -5,7 +5,6 @@ import unittest
 import shutil
 import sys
 import time
-import pytest
 import shutil
 from unittest.mock import patch
 
@@ -66,7 +65,7 @@ class TestRouterRender(TestCase):
 		self.assertEqual(TEST, response['text'])
 
 	def test_route_about_with_query(self):
-		response = self.get('/about?id=5')
+		response = self.get('/about', data={'id': 5})
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual('yes', response['text'])
 
@@ -110,13 +109,12 @@ class TestRouterRender(TestCase):
 		#give kwargs and args
 		with self.assertRaises(ValueError) as error:
 			reverse('article', kwargs={'id': 5}, args={'name': 'test'})
-		self.assertEqual(str(error.exception), ("Don't use *args and **kwargs."
-			"*args is for get and **kwargs for post method."))
+		self.assertEqual(str(error.exception), "You can't mix *args and **kwargs.")
 		#invalid parmas name
 		invalid_params = 'id_wrong'
 		with self.assertRaises(NoReverseFound) as error:
 			reverse('article', kwargs={invalid_params: 5})
-		self.assertEqual(str(error.exception), ("Reverse for article not found. " 
+		self.assertEqual(str(error.exception), ("Reverse for `article` not found. " 
 					"Keyword arguments 'id' not found."))
 		#valid
 		_id = 5
@@ -127,8 +125,12 @@ class TestRouterRender(TestCase):
 
 	def test_reverse_with_args(self):
 		name = 'Harouna Diallo'
-		url = reverse('info', args={'name': name})
-		response = self.get(url)
+		with self.assertRaises(ValueError) as error:
+			url = reverse('info', args={'name': name})
+		self.assertEqual(str(error.exception), 
+			f"The view `info` expects 0 parameters but has received 1")
+		url = reverse('info')
+		response = self.get(url, data={'name': name})
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual(name, response['text'])
 

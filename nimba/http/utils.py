@@ -5,6 +5,7 @@ import http.client
 from wsgiref.headers import Headers
 import pathlib
 import urllib.parse
+from collections.abc import Iterable
 
 import traceback
 import mimetypes
@@ -38,35 +39,49 @@ ROUTES = {}
 REVERSE_ROUTE_INFO = {}
 PROJECT_MASK = 'PROJECT_MASK_PATH'
 
-def reverse(name_path:str, args=None, kwargs=None) -> str:
+def reverse(name_path:str, *args, **kwargs) -> str:
 	if not isinstance(name_path, str) or not re.match(r"^[^\d\W][\w-]*\Z", name_path):
 			raise ValueError("Name path must but a valid identifier name.")
-	args = args or {}
-	kwargs = kwargs or {}
+			
+	args = kwargs.get('args') or args or {}
+	kwargs.pop('args', None)
+	kwargs = kwargs.get('kwargs') or kwargs or {}
+	
 	if args and kwargs:
-		raise ValueError(("Don't use *args and **kwargs."
-			"*args is for get and **kwargs for post method."))
-	path = REVERSE_ROUTE_INFO.get(name_path)
+		raise ValueError(("You can't mix *args and **kwargs."))
+	if not isinstance(args, Iterable) or not isinstance(kwargs, dict):
+	    raise ValueError("*args or ** kwargs must be list and dict respectively")
+	    
+	path, view = REVERSE_ROUTE_INFO.get(name_path) or (None, None)
+	original_path = path
 	if not path:
 		raise NoReverseFound(f"Reverse for {name_path} not found.")
-	
+	regex = r'<(?:(?P<converter>[^>:]+):)?(?P<parameter>[^>]+)>'
+	url  = re.compile(regex, 0)
+	params_path = list(url.finditer(path))
+	got_params = args or kwargs
+	if len(params_path) != len(got_params):
+	    raise ValueError((f"The view `{view}` expects {len(params_path)} " 
+	    	f"parameters but has received {len(got_params)}"))
 	if args:
-		path = path +'?'+ urllib.parse.urlencode(args)
-	else:
-		regex = r'<(?:(?P<converter>[^>:]+):)?(?P<parameter>[^>]+)>'
-		url  = re.compile(regex, 0)
-		helper_path = path
-		for match in url.finditer(path):
-			value = kwargs.get(match['parameter'])
-			if not value:
-				raise NoReverseFound((f"Reverse for {name_path} not found. " 
-					"Keyword arguments '%s' not found." % match['parameter']))
+		for arg, match in zip(args, params_path):
 			path = re.sub(
-				helper_path[match.start():match.end()], 
-				str(value), 
+				original_path[match.start():match.end()], 
+				urllib.parse.quote(str(arg)), 
 				path
 			)
-	return path	
+	else:
+		for match in params_path:
+			value = kwargs.get(match['parameter'])
+			if not value:
+				raise NoReverseFound((f"Reverse for `{name_path}` not found. " 
+					"Keyword arguments '%s' not found." % match['parameter']))
+			path = re.sub(
+				original_path[match.start():match.end()], 
+				urllib.parse.quote(str(value)), 
+				path
+			)
+	return path
 
 def load_static(value):
 	return os.path.join('/staticfiles/', value)
@@ -125,7 +140,7 @@ def router(path, methods=['GET'], name=None):
 		ROUTES[new_path] = (callback, converters, path, methods)
 
 		# if: pass
-		REVERSE_ROUTE_INFO[name or callback.__name__] = path
+		REVERSE_ROUTE_INFO[name or callback.__name__] = path, callback.__name__
 		def application(environ, start_response):
 			request = Request(environ)
 			#authorized
