@@ -73,10 +73,9 @@ Quit the server with CONTROL-C.
 
 </div>
 
-Open <a href="http://127.0.0.1:8000" target="_blank">`http://127.0.0.1:8000`</a> in your navigator
-![Screenshot](https://github.com/hadpro24/nimba-framework/blob/main/result.png?raw=true)
+Open <a href="http://127.0.0.1:8000" target="_blank">`http://127.0.0.1:8000`</a>
 
-continue directly with <a href="https://docs.nimbasolution.com/tutorial">tutorial</a>
+Continue with documentation <a href="https://docs.nimbasolution.com/tutorial">tutorial</a>
 
 ## Licence
 
