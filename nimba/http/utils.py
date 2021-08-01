@@ -18,6 +18,7 @@ from jinja2 import PackageLoader
 from jinja2 import select_autoescape
 from jinja2 import BaseLoader
 import tempfile
+import json
 
 from nimba.http.request import Request
 from nimba.http.response import Response
@@ -38,6 +39,21 @@ from nimba.core.exceptions import (
 ROUTES = {}
 REVERSE_ROUTE_INFO = {}
 PROJECT_MASK = 'PROJECT_MASK_PATH'
+
+def json_render(data, status=200):
+	"""
+		render json data
+	"""
+	data = json.dumps(data)
+	headers = Headers()
+	headers.add_header('Content-Type', 'application/json')
+	status_string = http.client.responses.get(status, 'UNKNOWN')
+	response = {
+		'status': f'{status} {status_string}',
+		'content': [data.encode('utf-8')],
+		'headers': headers,
+	}
+	return response
 
 def reverse(name_path, *args, **kwargs):
 	"""
@@ -116,7 +132,6 @@ def redirect(to, partial=False):
 		'content': [b''],
 		'headers': headers,
 	}
-	print('kkkkkkkkkkkkkkkkkkk', response)
 	return response
 
 def load_static(value):
