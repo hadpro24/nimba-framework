@@ -39,8 +39,28 @@ ROUTES = {}
 REVERSE_ROUTE_INFO = {}
 PROJECT_MASK = 'PROJECT_MASK_PATH'
 
-def reverse(name_path:str, *args, **kwargs) -> str:
-	if not isinstance(name_path, str) or not re.match(r"^[^\d\W][\w-]*\Z", name_path):
+def reverse(name_path, *args, **kwargs):
+	"""
+		Reverse path using name or function name str
+		Example:
+			@router('/', name='home')
+			def home(request):
+				return 'welcom home'
+
+			@router('/article/<int:id>', name='article')
+			def home(request, id):
+				return 'welcom article'
+
+			@router('/about')
+			def home(request):
+				return 'welcom about'
+
+			reverse('name') ==> '/'
+			reverse('article', id=5) ==> '/article/5'
+			reverse('about') ==> '/about'
+	"""
+	if (not isinstance(name_path, str) or
+		 not re.match(r"^[^\d\W][\w-]*\Z", name_path)):
 			raise ValueError("Name path must but a valid identifier name.")
 			
 	args = kwargs.get('args') or args or {}
@@ -50,7 +70,7 @@ def reverse(name_path:str, *args, **kwargs) -> str:
 	if args and kwargs:
 		raise ValueError(("You can't mix *args and **kwargs."))
 	if not isinstance(args, Iterable) or not isinstance(kwargs, dict):
-	    raise ValueError("*args or ** kwargs must be list and dict respectively")
+	    raise ValueError("*args or **kwargs must be list and dict respectively")
 	    
 	path, view = REVERSE_ROUTE_INFO.get(name_path) or (None, None)
 	original_path = path
@@ -82,6 +102,22 @@ def reverse(name_path:str, *args, **kwargs) -> str:
 				path
 			)
 	return path
+
+def redirect(to, partial=False):
+	"""
+		redirect http
+	"""
+	status = '302 Found' if partial else '301 Moved Permanently'
+	path = reverse(to)
+	headers = Headers()
+	headers.add_header('Location', path)
+	response = {
+		'status': status,
+		'content': [b''],
+		'headers': headers,
+	}
+	print('kkkkkkkkkkkkkkkkkkk', response)
+	return response
 
 def load_static(value):
 	return os.path.join('/staticfiles/', value)
@@ -204,6 +240,8 @@ def router(path, methods=['GET'], name=None):
 							'content': content_response,
 							'headers': headers,
 						}
+					# check if redirect
+					# check if serializer
 			else:
 				response = render(*error_404(request, route, ROUTES))
 			start_response(response['status'], response['headers'].items())

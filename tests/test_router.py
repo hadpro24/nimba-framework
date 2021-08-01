@@ -8,7 +8,7 @@ import time
 import shutil
 from unittest.mock import patch
 
-from nimba.http import router, render, reverse
+from nimba.http import router, render, reverse, redirect
 from nimba.core.server import Application
 from nimba.core.exceptions import NoReverseFound
 
@@ -38,6 +38,18 @@ def info(request):
 @router('/me')
 def me(request):
 	return render('awesome_app/me.html')
+
+@router('/to-redirect')
+def redirect_to(request):
+	return 'Test direct'
+
+@router('/move-partial')
+def move_partial(request):
+	return redirect('redirect_to', partial=True)
+
+@router('/move', name='move')
+def move(request):
+	return redirect('redirect_to')
 
 class TestRouterRender(TestCase):
 	def setUp(self):
@@ -133,6 +145,16 @@ class TestRouterRender(TestCase):
 		response = self.get(url, data={'name': name})
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual(name, response['text'])
+
+	def test_redirect_partial(self):
+		response = self.get(reverse('move_partial'))
+		self.assertEqual(200, response['status_code'])
+		self.assertEqual('Test direct', response['text'])
+
+	def test_redirect_permanente(self):
+		response = self.get(reverse('move'))
+		self.assertEqual(200, response['status_code'])
+		self.assertEqual('Test direct', response['text'])
 
 	def tearDown(self):
 		try:
