@@ -46,9 +46,9 @@ class BaseServer:
             self.host, self.port, self.app
         )
         # Don't to log
-        # log_request = httpd.RequestHandlerClass.log_request
-        # no_logging = lambda *args, **kwargs: None
-        # httpd.RequestHandlerClass.log_request = no_logging
+        log_request = httpd.RequestHandlerClass.log_request
+        no_logging = lambda *args, **kwargs: None
+        httpd.RequestHandlerClass.log_request = no_logging
 
         self.ready.set()
         while True:
@@ -60,7 +60,7 @@ class BaseServer:
 
             if self.stop_read in ready:
                 os.read(self.stop_read, len(self.__stop_marker))
-                # httpd.RequestHandlerClass.log_request = log_request
+                httpd.RequestHandlerClass.log_request = log_request
                 break
 
 

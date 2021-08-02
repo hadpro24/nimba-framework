@@ -1,4 +1,4 @@
-from nimba.http import router, render
+from nimba.http import router, render, json_render
 
 films = [
     {
@@ -74,3 +74,16 @@ def film_detail(request, id):
     }
     return render('awesome_app/detail_film.html', contexts)
 
+
+@router('/users')
+def users(request):
+    return json_render({'users': [
+        {
+         'id': 4,
+          'name': 'harouna'
+        },
+        {
+         'id': 2,
+          'name': 'diallo'
+        },
+    ]})

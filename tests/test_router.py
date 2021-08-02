@@ -6,9 +6,13 @@ import shutil
 import sys
 import time
 import shutil
+import json
 from unittest.mock import patch
 
-from nimba.http import router, render, reverse, redirect
+from nimba.http import (
+	router, render, reverse, redirect,
+	json_render
+)
 from nimba.core.server import Application
 from nimba.core.exceptions import NoReverseFound
 
@@ -50,6 +54,19 @@ def move_partial(request):
 @router('/move', name='move')
 def move(request):
 	return redirect('redirect_to')
+
+@router('/jsonify-post')
+def post_data(request):
+	return json_render(
+		{'success': True, 'message': 'Email send successfuly!'},
+		status=201
+	)
+
+@router('/jsonify-get')
+def get_data(request):
+	return json_render(
+		{'success': True, 'data': [4, 5, 6]},
+	)
 
 class TestRouterRender(TestCase):
 	def setUp(self):
@@ -155,6 +172,20 @@ class TestRouterRender(TestCase):
 		response = self.get(reverse('move'))
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual('Test direct', response['text'])
+
+	def test_json_render(self):
+		response = self.get(reverse('post_data'))
+		self.assertEqual(response['status_code'], 201)
+		data = json.loads(response['text'])
+		self.assertEqual(data['success'], True)
+		self.assertTrue(data['message'])
+
+	def test_json_render(self):
+		response = self.get(reverse('get_data'))
+		self.assertEqual(response['status_code'], 200)
+		data = json.loads(response['text'])
+		self.assertEqual(data['success'], True)
+		self.assertTrue(data['data'])
 
 	def tearDown(self):
 		try:
