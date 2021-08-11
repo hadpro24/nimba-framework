@@ -124,9 +124,9 @@ class TestCase(unittest.TestCase):
 
         url = self.base_url+url
         res = {}
-        f = open(os.devnull, 'w')
-        old_target = sys.stdout
-        sys.stdout = f
+        # f = open(os.devnull, 'w')
+        # old_target = sys.stdout
+        # sys.stdout = f
         try:
             response = urllib.request.urlopen(url)
             res['status_code'] = response.code
@@ -138,19 +138,29 @@ class TestCase(unittest.TestCase):
         except urllib.error.URLError as error_sys:
             res['status_code'] = error_sys.code
             res['text'] = error_sys.read().decode('utf-8')
-        f.close()
-        sys.stdout = old_target
+        # f.close()
+        # sys.stdout = old_target
         return res
 
     def post(self, path, data=None, secure=False,
         content_type='multipart/form-data; boundary=BoUnDaRyStRiNg'):
         data = self._encode_json({} if data is None else data, content_type)
-        query_string = urllib.parse.urlencode(data)
-        data = query_string.encode('ascii')
+        # query_string = urllib.parse.urlencode(data)
+        # data = query_string.encode('ascii')
         path = self.base_url+path
-        with urllib.request.urlopen(path, data) as response:
-            response_text = response.read()
-        return response_text
+        res = {}
+        try:
+            response = urllib.request.urlopen(path, data)
+            res['status_code'] = response.code
+            res['text'] = response.read().decode('utf-8')
+        except urllib.error.HTTPError as error:
+            res['status_code'] = error.code
+            # response['text'] = e.msg
+            res['text'] = error.file.read().decode('utf-8')
+        except urllib.error.URLError as error_sys:
+            res['status_code'] = error_sys.code
+            res['text'] = error_sys.read().decode('utf-8')
+        return res
 
     def _encode_json(self, data, content_type):
         """

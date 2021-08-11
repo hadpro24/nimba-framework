@@ -19,7 +19,7 @@ $ nimba create --app awesome_app
 
 ### Structure project
 
-* `app` - Your app project, you will spend most of your time here.
+* `application` - Your application project (you will spend most of your time here).
     - `views.py` - Your logic code
     - `models.py` - Define here the schema of your database
     - `tests.py` - Write your test here

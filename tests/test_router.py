@@ -18,6 +18,11 @@ from nimba.core.exceptions import NoReverseFound
 
 from nimba.test.client import TestCase
 
+from nimba.core.welcom import (
+	DEFAULT_DIRECTORY_INDEX_TEMPLATE,
+	home_default
+)
+
 TEST = 'test'
 
 @router('/about')
@@ -68,6 +73,19 @@ def get_data(request):
 		{'success': True, 'data': [4, 5, 6]},
 	)
 
+@router('/users/create', methods=['POST'])
+def users_post(request):
+	return 'Ok'
+
+@router('/users', methods=['GET'])
+def users_list(request):
+	return 'Ok'
+
+@router('/error-test')
+def error_test(request):
+	raise ValueError("error")
+	return 'Ok'
+
 class TestRouterRender(TestCase):
 	def setUp(self):
 		os.environ['PROJECT_MASK_PATH'] = str(pathlib.Path(
@@ -75,9 +93,6 @@ class TestRouterRender(TestCase):
 		).parent.absolute())
 		self.url = 'tests/templates/awesome_app'
 		os.makedirs(self.url)
-		f = open(os.path.join(self.url, 'home.html'), 'w+')
-		f.write(TEST)
-		f.close()
 		#wrtie me
 		f = open(os.path.join(self.url, 'me.html'), 'w+')
 		f.write('hello, world')
@@ -86,7 +101,10 @@ class TestRouterRender(TestCase):
 	def test_route_home(self):
 		response = self.get('/')
 		self.assertEqual(200, response['status_code'])
-		self.assertEqual(TEST, response['text'])
+		self.assertIn(
+			"Nimba Framework successfully installed",
+			response['text']
+		)
 
 	def test_route_about(self):
 		response = self.get('/about')
@@ -124,6 +142,23 @@ class TestRouterRender(TestCase):
 		response = self.get(url)
 		self.assertEqual(200, response['status_code'])
 		self.assertEqual(TEST, response['text'])
+
+	def test_method_authorized(self):
+		url = reverse('users_post')
+		response = self.get(url)
+		self.assertEqual(401, response['status_code'])
+		response = self.post(url)
+		self.assertEqual(200, response['status_code'])
+
+	def test_method_post(self):
+		url =reverse('users_list')
+		response = self.post(url)
+		self.assertEqual(401, response['status_code'])
+
+	def test_error_view(self):
+		url = reverse('error_test')
+		response = self.get(url)
+		self.assertEqual(500, response['status_code'])
 
 	def test_reverse_with_name_and_kwargs(self):
 		#error type name path

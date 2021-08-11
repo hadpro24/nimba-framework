@@ -21,7 +21,7 @@ def main():
     except ImportError as e:
         raise ImportError(
             "Couldn't import nimba server. Active your environnement"
-            "or install nimba framework (ex: pip install nimba-framework)"
+            "or install nimba framework (ex: pip install nimba)"
         )
     mont_nimba(sys.argv, pathlib.Path(__file__).parent.absolute())
 
@@ -36,9 +36,9 @@ def home(request):
     return render('awesome_app/home.html')
 """
 
-import_test = """#write your test here """
-import_models = """#write your models here """
-import_settings = """#all settings application """
+import_test = """# write your test here """
+import_models = """# write your models here """
+import_settings = """# all settings application """
 
 class CreateApp:
     """
@@ -71,10 +71,9 @@ class CreateApp:
                 )
             )
         with Loader("Create application...", "Done!"):
-            import shutil
             #create application
             os.makedirs(path_application)
-            os.makedirs(os.path.join(path_application, 'app'))
+            os.makedirs(os.path.join(path_application, 'application'))
             os.makedirs(os.path.join(path_application, f'templates/{self.app_label}'))
             os.makedirs(os.path.join(path_application, 'staticfiles'))
             #template
@@ -82,15 +81,15 @@ class CreateApp:
             f.write(DEFAULT_DIRECTORY_INDEX_TEMPLATE)
             f.close()
             #init
-            f = open(os.path.join(path_application, 'app', '__init__.py'), 'w+')
+            f = open(os.path.join(path_application, 'application', '__init__.py'), 'w+')
             f.close()
-            f = open(os.path.join(path_application, 'app', 'models.py'), 'w+')
+            f = open(os.path.join(path_application, 'application', 'models.py'), 'w+')
             f.write(import_models)
             f.close()
-            f = open(os.path.join(path_application, 'app', 'views.py'), 'w+')
+            f = open(os.path.join(path_application, 'application', 'views.py'), 'w+')
             f.write(import_view)
             f.close()
-            f = open(os.path.join(path_application, 'app', 'tests.py'), 'w+')
+            f = open(os.path.join(path_application, 'application', 'tests.py'), 'w+')
             f.write(import_test)
             f.close()
             #setting
