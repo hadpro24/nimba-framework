@@ -35,3 +35,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
+      - name: Changelog
+        uses: heinrichreimer/github-changelog-generator-action@v2.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
