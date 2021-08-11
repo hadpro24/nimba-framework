@@ -79,7 +79,7 @@ class CommandUtility:
 		from nimba.core.welcom import home_default
 		try:
 			view_module = importlib.import_module(
-				os.environ.get('APP_MASK_VIEW', 'app.views')
+				os.environ.get('APP_MASK_VIEW', 'application.views')
 			)
 			for attr in dir(view_module):
 				if hasattr(attr, '__call__'):

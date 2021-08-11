@@ -4,8 +4,9 @@
 [![pypi](https://img.shields.io/pypi/v/nimba.svg)](https://pypi.org/project/nimba/)
 [![pypi](https://img.shields.io/pypi/l/nimba.svg)](https://pypi.org/project/nimba/)
 [![pypi](https://img.shields.io/pypi/pyversions/nimba)](https://pypi.org/project/nimba/)
+[![Issues](https://img.shields.io/github/issues/hadpro24/nimba-framework.svg)](https://github.com/hadpro24/nimba-framework/issues)
 
-Nimba Framework is a fast coding, web framework with python.
+Nimba is a python web framework for lazy developers, focusing only on your needs.
 > **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
 
 Everything you need to know about Nimba Framework
@@ -48,7 +49,7 @@ $ nimba create --app awesome_app
 
 ### Structure project
 
-* `app` - Your app project, you will spend most of your time here.
+* `application` - Your app project (you will spend most of your time here).
     - `views.py` - Your logic code
     - `models.py` - Define here the schema of your database
     - `tests.py` - Write your test here
