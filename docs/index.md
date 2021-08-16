@@ -4,10 +4,9 @@
 </p>
 > **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
 
+Nimba is a python web framework for lazy developers, just focus on your codes.
+
 Everything you need to know about Nimba Framework
-
-Nimba is a python web framework for lazy developers, focusing only on your needs.
-
 The key features are:
 
 * **Fast to code**: Increase the speed to develop features.

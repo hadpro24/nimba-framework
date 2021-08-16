@@ -30,7 +30,7 @@ DEFAULT_DIRECTORY_INDEX_TEMPLATE = """
 <body>
   <div class="contenair">
     <h1>Nimba Framework successfully installed</h1>
-    <p>Nimba Framework is a modern, fast (coding), web framework with python</p>
+    <p>Nimba is a python web framework for lazy developers, focusing only on your needs.</p>
     <img src="{{ load_static('nimba/img/nimba-logo.png') }}">
     <p>
       Everything you need to know about Nimba Framework at <a href="https://docs.nimbasolution.com/" target="_blank">https://docs.nimbasolution.com</a>

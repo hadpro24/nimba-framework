@@ -6,7 +6,7 @@
 [![pypi](https://img.shields.io/pypi/pyversions/nimba)](https://pypi.org/project/nimba/)
 [![Issues](https://img.shields.io/github/issues/hadpro24/nimba-framework.svg)](https://github.com/hadpro24/nimba-framework/issues)
 
-Nimba is a python web framework for lazy developers, focusing only on your needs.
+Nimba is a python web framework for lazy developers, just focus on your codes.
 > **warning** This project is private and is still in design, not ready for production. Create an issue if you encounter any bugs!
 
 Everything you need to know about Nimba Framework
