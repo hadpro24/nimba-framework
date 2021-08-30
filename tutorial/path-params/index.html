@@ -699,6 +699,15 @@
 </div>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nimba.http</span> <span class="kn">import</span> <span class="n">router</span><span class="p">,</span> <span class="n">render</span>
 
+
+<span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">list_films</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="s1">&#39;awesome_app/films.html&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app/views.py</label><div class="tabbed-content"></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nimba.http</span> <span class="kn">import</span> <span class="n">router</span><span class="p">,</span> <span class="n">render</span>
+
 <span class="n">films</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -749,7 +758,7 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="s1">&#39;awesome_app/films.html&#39;</span><span class="p">,</span> <span class="n">contexts</span><span class="p">)</span>
 </code></pre></div>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">templates/awesome_app/films.html</label><div class="tabbed-content"></div>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">templates/awesome_app/films.html</label><div class="tabbed-content"></div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -779,7 +788,7 @@
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app/views.py</label><div class="tabbed-content"></div>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app/views.py</label><div class="tabbed-content"></div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nimba.http</span> <span class="kn">import</span> <span class="n">router</span><span class="p">,</span> <span class="n">render</span>
 
@@ -798,7 +807,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nd">@router</span><span class="p">(</span><span class="s1">&#39;/films/&lt;int:id&gt;&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">templates/awesome_app/film_detail.html</label><div class="tabbed-content"></div>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">templates/awesome_app/film_detail.html</label><div class="tabbed-content"></div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>

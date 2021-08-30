@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://framework.nimbasolution.com/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/contributing/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/features/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/release-notes/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/css-style/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/deployment/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/forms/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/models/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/path-params/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/post-params/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://framework.nimbasolution.com/tutorial/query-params/</loc>
-         <lastmod>2021-08-16</lastmod>
+         <lastmod>2021-08-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
